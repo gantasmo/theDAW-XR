@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 43779523628fc4f839ef208bf9d3c4c1
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 344340
+  packageName: Hologram VFX URP
+  packageVersion: 1.0
+  assetPath: Assets/Holograms/Demo/Scene/DemoScene.unity
+  uploadId: 817936

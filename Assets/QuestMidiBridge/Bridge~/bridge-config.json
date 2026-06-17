@@ -1,0 +1,8 @@
+{
+  "tcpPort": 8765,
+  "midiPortName": "QuestMIDI",
+  "midiInPortName": "QuestMIDI-Return",
+  "adbPath": "D:/Dev/Meta-Quest-Developer-Hub-6.4.1.exe/Meta Quest Developer Hub/resources/bin/adb.exe",
+  "autoAdbReverse": true,
+  "verbose": false
+}

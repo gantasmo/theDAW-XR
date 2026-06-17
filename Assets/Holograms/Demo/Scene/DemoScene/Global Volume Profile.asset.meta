@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 879c2427247c348cbb19960d7dda4da6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 344340
+  packageName: Hologram VFX URP
+  packageVersion: 1.0
+  assetPath: Assets/Holograms/Demo/Scene/DemoScene/Global Volume Profile.asset
+  uploadId: 817936

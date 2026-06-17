@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1220a2ce5ba54408a9d7d6a99f01b16c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 344340
+  packageName: Hologram VFX URP
+  packageVersion: 1.0
+  assetPath: Assets/Holograms/Prefabs/ProjectorMesh.prefab
+  uploadId: 817936

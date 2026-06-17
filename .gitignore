@@ -1,0 +1,57 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# Asset meta files must NOT be ignored when their asset is tracked
+!/[Aa]ssets/**/*.meta
+
+# IDE / build tool cruft (Unity regenerates these)
+.vs/
+.vsconfig
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+ExportedObj/
+
+# Build artifacts
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# Unity Android/IL2CPP build working dir + stray temp assemblies
+.utmp/
+TempAssembly*.dll
+
+# New-format solution files (Unity/IDE regenerate these)
+*.slnx
+
+# Addressables / Crashlytics
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+crashlytics-build.properties
+
+# Plastic SCM workspace metadata (not relevant to git)
+.plastic/
+
+# OS
+.DS_Store
+Thumbs.db

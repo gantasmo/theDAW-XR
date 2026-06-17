@@ -1,0 +1,14 @@
+{
+  "name": "quest-midi-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Receives control data from a Quest Unity app over USB (adb) and forwards it to a virtual MIDI port for WebMIDI.",
+  "main": "bridge.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node bridge.js"
+  },
+  "dependencies": {
+    "@julusian/midi": ">=2.0.0"
+  }
+}

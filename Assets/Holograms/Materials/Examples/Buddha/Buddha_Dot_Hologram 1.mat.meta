@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 180f3b97af56f44baa95d03254ee2d6f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 344340
+  packageName: Hologram VFX URP
+  packageVersion: 1.0
+  assetPath: Assets/Holograms/Materials/Examples/Buddha/Buddha_Dot_Hologram 1.mat
+  uploadId: 817936

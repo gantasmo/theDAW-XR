@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a040d19b30cfd449f8b324a3be99e8da
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 344340
+  packageName: Hologram VFX URP
+  packageVersion: 1.0
+  assetPath: Assets/Holograms/Prefabs/Teapot.prefab
+  uploadId: 817936

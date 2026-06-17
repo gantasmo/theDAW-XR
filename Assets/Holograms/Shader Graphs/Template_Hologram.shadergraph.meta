@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: da4385e5c0d5a48c980b0ef13e80894b
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 625f186215c104763be7675aa2d941aa, type: 3}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 344340
+  packageName: Hologram VFX URP
+  packageVersion: 1.0
+  assetPath: Assets/Holograms/Shader Graphs/Template_Hologram.shadergraph
+  uploadId: 817936

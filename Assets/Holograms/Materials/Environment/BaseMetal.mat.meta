@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6bf27c676a3b94f989e12187d98987bc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 344340
+  packageName: Hologram VFX URP
+  packageVersion: 1.0
+  assetPath: Assets/Holograms/Materials/Environment/BaseMetal.mat
+  uploadId: 817936

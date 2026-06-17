@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 849576ffb4a09483d9223a357ac10c9b
+VisualEffectImporter:
+  externalObjects: {}
+  serializedVersion: 1
+  template:
+    name: 
+    category: 
+    description: 
+    icon: {instanceID: 0}
+    thumbnail: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 344340
+  packageName: Hologram VFX URP
+  packageVersion: 1.0
+  assetPath: Assets/Holograms/VFX/HologramProjectionRay_VFX.vfx
+  uploadId: 817936

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7a506c1da4fdc4187b4b6bd194dde4cc
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 344340
+  packageName: Hologram VFX URP
+  packageVersion: 1.0
+  assetPath: Assets/Holograms/Prefabs/StanfordDragon.prefab
+  uploadId: 817936

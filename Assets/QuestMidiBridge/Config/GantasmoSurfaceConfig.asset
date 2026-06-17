@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9730ef6630d9b89438ff5ef527d9c862, type: 3}
+  m_Name: GantasmoSurfaceConfig
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::Gantasmo.XRMidi.EditorTools.GantasmoSurfaceConfig
+  position: {x: 0, y: 1.1, z: 0.3}
+  eulerAngles: {x: -0, y: 180, z: 0}
+  hamburgerPosition: {x: 0.384, y: -0.09608126, z: 0.0003174581}
+  editRigPosition: {x: 0, y: 0, z: 0}
+  channel: 1
+  highResolution: 0
+  sliders:
+    count: 8
+    columns: 8
+    spacing: {x: 0.1, y: 0.16}
+    origin: {x: 0, y: 0.34, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    material: {fileID: 0}
+    customPrefab: {fileID: 0}
+    positionOverrides:
+    - {x: -0.628, y: 0.08000004, z: 0.17829998}
+    - {x: -0.538, y: 0.120000005, z: 0.05943222}
+    - {x: -0.384, y: 0.13837004, z: -0.059435133}
+    - {x: 0.187, y: 0.13837004, z: -0.101000026}
+    - {x: -0.188, y: 0.13837004, z: -0.100999996}
+    - {x: 0.37363142, y: 0.13837004, z: -0.05900928}
+    - {x: 0.548, y: 0.120000005, z: 0.059009273}
+    - {x: 0.606403, y: 0.08000004, z: 0.17631702}
+    rotationOverrides:
+    - {x: -0, y: 45.941105, z: 0}
+    - {x: -0, y: 30.000008, z: 0}
+    - {x: -0, y: 14.999995, z: 0}
+    - {x: -0, y: 0, z: 0}
+    - {x: -0, y: 0, z: 0}
+    - {x: -0, y: 344.99997, z: 0}
+    - {x: -0, y: 330, z: 0}
+    - {x: -0, y: 314.68732, z: 0}
+    ccStart: 1
+    travel: 0.12
+    axis: 1
+    bipolar: 0
+  crossfade:
+    count: 1
+    columns: 8
+    spacing: {x: 0.1, y: 0.13}
+    origin: {x: 0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    material: {fileID: 0}
+    customPrefab: {fileID: 0}
+    positionOverrides:
+    - {x: -0.061, y: 0.13837004, z: -0.107}
+    rotationOverrides:
+    - {x: -0, y: 0, z: 0}
+    ccStart: 4
+    travel: 0.12
+    axis: 0
+    bipolar: 1
+  knobs:
+    count: 6
+    columns: 6
+    spacing: {x: 0.12, y: 0.12}
+    origin: {x: 0, y: 0.06, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    material: {fileID: 0}
+    customPrefab: {fileID: 0}
+    positionOverrides:
+    - {x: -0.448, y: 0.049000025, z: -0.033000004}
+    - {x: -0.269, y: 0.049000025, z: -0.032999985}
+    - {x: -0.089, y: 0.049000025, z: -0.033}
+    - {x: 0.09, y: 0.049000025, z: -0.033000015}
+    - {x: 0.27, y: 0.049000025, z: -0.033}
+    - {x: 0.449, y: 0.049000025, z: -0.03300001}
+    rotationOverrides:
+    - {x: 353.40268, y: 0.000000033389302, z: -0.0000005793177}
+    - {x: 353.40268, y: 0.000000033389302, z: -0.0000005793177}
+    - {x: 353.40268, y: 0.000000033389302, z: -0.0000005793177}
+    - {x: 353.40268, y: 0.000000033389302, z: -0.0000005793177}
+    - {x: 353.40268, y: 0.000000033389302, z: -0.0000005793177}
+    - {x: 353.40268, y: 0.000000033389302, z: -0.0000005793177}
+    ccStart: 40
+    minAngle: -135
+    maxAngle: 135
+    axis: 2
+  buttons:
+    count: 12
+    columns: 6
+    spacing: {x: 0.1, y: 0.11}
+    origin: {x: 0, y: -0.16, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    material: {fileID: 0}
+    customPrefab: {fileID: 0}
+    positionOverrides:
+    - {x: -0.25, y: -0.08186698, z: -0.036511295}
+    - {x: -0.15, y: -0.08186698, z: -0.036511287}
+    - {x: -0.05, y: -0.08186698, z: -0.036511306}
+    - {x: 0.05, y: -0.08186698, z: -0.0365113}
+    - {x: 0.15, y: -0.08186698, z: -0.036511317}
+    - {x: 0.25, y: -0.08186698, z: -0.03651131}
+    - {x: -0.25, y: -0.16413313, z: 0.03651119}
+    - {x: -0.15, y: -0.16413313, z: 0.036511198}
+    - {x: -0.05, y: -0.16413313, z: 0.03651118}
+    - {x: 0.05, y: -0.16413313, z: 0.036511187}
+    - {x: 0.15, y: -0.16413313, z: 0.036511168}
+    - {x: 0.25, y: -0.16413313, z: 0.036511175}
+    rotationOverrides:
+    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    noteStart: 36
+    mode: 0
+    velocity: 110

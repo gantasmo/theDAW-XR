@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dragon_Grid_Hologram
+  m_Shader: {fileID: -6465566751694194690, guid: 2ca99467703c241f2b2603f2c8556688, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Hologram_Texture:
+        m_Texture: {fileID: 2800000, guid: 552a20de773034229bc698a293af4fe2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Displacement_Density: 0.5
+    - _Displacement_Noise_Scale: 0.5
+    - _Displacement_Offset: 0.05
+    - _Displacement_Speed: 1
+    - _Emission_Scale: 1
+    - _Fresnel_Power: 1
+    - _Pattern_Boost: 1
+    - _Pattern_Density: 1000
+    - _Pattern_Edge_A: 0
+    - _Pattern_Edge_B: 0
+    - _Pattern_Noise_Scale: 50
+    - _Pattern_Speed_A: 1
+    - _Pattern_Speed_B: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    m_Colors:
+    - _Displacement_Direction: {r: 1, g: 0, b: 0, a: 0}
+    - _Displacement_Noise_Direction: {r: 1, g: 0, b: 0, a: 0}
+    - _Hologram_Color: {r: 0.4397111, g: 1, b: 0, a: 1}
+    - _Pattern_Direction_Horizontal: {r: 1, g: 0, b: 0, a: 0}
+    - _Pattern_Direction_Vertical: {r: 0, g: 1, b: 0, a: 0}
+    - _Texture_Tint_Color: {r: 0, g: 1, b: 0.87953043, a: 0.10980392}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &4295059883078832168
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 10
