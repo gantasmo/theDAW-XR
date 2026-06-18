@@ -56,6 +56,28 @@ namespace Gantasmo.Passthrough
                  "(unsupported device, not yet ready, or outside the depth frustum).")]
         public bool useEnvironmentDepth = true;
 
+        [Header("Augmented composite (3D content in the stream)")]
+        [Tooltip("Render the scene's virtual 3D content from this stitch's head-center viewpoint and composite it over " +
+                 "the passthrough, exposed as CompositeTexture for the streamer (the Mixed-Reality-Capture composite). " +
+                 "Off = passthrough only. Costs a second offscreen scene render each frame.")]
+        public bool composite3D = true;
+        [Tooltip("Layer for the in-headset preview quad so the composite camera can exclude it. Must be a layer your MAIN " +
+                 "camera still renders (so you still see the preview), but the augmentation camera does not.")]
+        public int previewLayer = 31;
+        [Tooltip("Flip the augmentation layer vertically if the 3D content composites upside down on your device.")]
+        public bool flipAugmentationV = false;
+        [Tooltip("Resolution the virtual 3D layer (MRC camera) renders at. Lower = a cheaper second render; the " +
+                 "composite upscales it over the full-res passthrough, so passthrough stays sharp while GPU cost drops. " +
+                 "Keep at or below outputResolution.")]
+        public Vector2Int augmentationResolution = new Vector2Int(1280, 720);
+        [Tooltip("Which layers the MRC camera renders into the stream. Leave as Nothing (0) to render everything " +
+                 "the main camera sees (minus the preview quad). Set it to ONLY the layer(s) holding the content you " +
+                 "want streamed (e.g. the MIDI surface) so the composite does not re-render the whole scene/rig — a big " +
+                 "GPU saving, since the composite is otherwise a third full render of every object.")]
+        public LayerMask augmentationCullingMask;
+        [Tooltip("The composite shader. Falls back to Shader.Find(\"Gantasmo/PassthroughComposite\") when empty.")]
+        public Shader compositeShader;
+
         [Header("Wiring")]
         [Tooltip("The stitch shader. Falls back to Shader.Find(\"Gantasmo/PassthroughStitch\") when empty.")]
         public Shader stitchShader;
@@ -65,8 +87,12 @@ namespace Gantasmo.Passthrough
         [Tooltip("Distance in front of the main camera to place the auto-created preview quad.")]
         public float previewDistance = 1.6f;
 
-        /// <summary>The live stitched 16:9 image. Stable across the component's lifetime.</summary>
+        /// <summary>The live stitched 16:9 passthrough image (no virtual content). Stable across the component's lifetime.</summary>
         public RenderTexture OutputTexture => _outRT;
+
+        /// <summary>Passthrough + the virtual 3D layer composited (the MR view), or null when composite3D is off.
+        /// The streamer prefers this so the VJ source carries the augmented content.</summary>
+        public RenderTexture CompositeTexture => _compositeRT;
 
         PassthroughCameraAccess _camL;
         PassthroughCameraAccess _camR;
@@ -75,6 +101,15 @@ namespace Gantasmo.Passthrough
         RenderTexture _outRT;
         EnvironmentDepthManager _depth;
         const string DepthKeyword = "GANTASMO_DEPTH_STITCH";
+
+        // Augmented composite (MRC): a head-center camera renders the virtual layer into
+        // _augRT (transparent matte); _compositeMat lays it over the passthrough into _compositeRT.
+        Camera _augCam;
+        RenderTexture _augRT;
+        RenderTexture _compositeRT;
+        Material _compositeMat;
+        static readonly int IdAugTex = Shader.PropertyToID("_AugTex");
+        static readonly int IdAugFlipV = Shader.PropertyToID("_AugFlipV");
 
         // Cached shader property ids.
         static readonly int IdLeftTex = Shader.PropertyToID("_LeftTex");
@@ -123,6 +158,66 @@ namespace Gantasmo.Passthrough
 
             SetupPreview();
             TrySetupDepth();
+            if (composite3D) SetupComposite();
+        }
+
+        // Mixed-Reality-Capture composite: an offscreen head-center camera renders the scene's
+        // virtual content (transparent where there is none) into _augRT; LateUpdate then lays
+        // that over the passthrough into _compositeRT. The augmentation camera renders to a
+        // RenderTexture only, so the user's in-headset view is untouched.
+        void SetupComposite()
+        {
+            var cshader = compositeShader != null ? compositeShader : Shader.Find("Gantasmo/PassthroughComposite");
+            if (cshader == null)
+            {
+                Debug.LogWarning("[GantasmoPassthroughStitch] 'Gantasmo/PassthroughComposite' not found; streaming passthrough only.", this);
+                composite3D = false;
+                return;
+            }
+            _compositeMat = new Material(cshader) { name = "GantasmoPassthroughComposite" };
+
+            // The MRC layer renders at its own (typically lower) resolution; the composite
+            // upscales it over the full-res passthrough. This is the main GPU saving knob.
+            int augW = Mathf.Clamp(augmentationResolution.x, 64, outputResolution.x);
+            int augH = Mathf.Clamp(augmentationResolution.y, 64, outputResolution.y);
+            _augRT = new RenderTexture(augW, augH, 24, RenderTextureFormat.ARGB32)
+            {
+                name = "GantasmoAugmentationRT",
+                useMipMap = false,
+                autoGenerateMips = false,
+            };
+            _augRT.Create();
+            _compositeRT = new RenderTexture(outputResolution.x, outputResolution.y, 0, RenderTextureFormat.ARGB32)
+            {
+                name = "GantasmoCompositeOutput",
+                useMipMap = false,
+                autoGenerateMips = false,
+            };
+            _compositeRT.Create();
+
+            var camGo = new GameObject("GantasmoAugmentationCam");
+            camGo.transform.SetParent(transform, false);
+            _augCam = camGo.AddComponent<Camera>();
+            _augCam.clearFlags = CameraClearFlags.SolidColor;
+            _augCam.backgroundColor = new Color(0f, 0f, 0f, 0f); // transparent matte: passthrough shows through
+            if (augmentationCullingMask.value != 0)
+            {
+                // Restrict the MRC render to just the streamed-content layer(s) — avoids re-rendering
+                // the whole scene/rig a third time. The preview quad layer is excluded regardless.
+                _augCam.cullingMask = augmentationCullingMask.value & ~(1 << previewLayer);
+            }
+            else
+            {
+                int mainMask = Camera.main != null ? Camera.main.cullingMask : ~0;
+                _augCam.cullingMask = mainMask & ~(1 << previewLayer); // render virtual content, never the preview quad
+            }
+            _augCam.targetTexture = _augRT; // offscreen only — does not touch the headset display
+            _augCam.nearClipPlane = 0.05f;
+            _augCam.farClipPlane = 1000f;
+            _augCam.depth = -10f;
+
+            // Keep the clean-passthrough preview quad out of the augmentation render.
+            if (previewRenderer != null) previewRenderer.gameObject.layer = previewLayer;
         }
 
         // Bring up Meta's EnvironmentDepthManager so it publishes the global depth
@@ -225,6 +320,12 @@ namespace Gantasmo.Passthrough
 
             var poseL = _camL.GetCameraPose();
             var poseR = _camR.GetCameraPose();
+            // A freshly-started passthrough camera can report a zero quaternion {0,0,0,0}
+            // for a frame or two before its first real pose lands. IsPlaying is already true
+            // by then, so without this guard Matrix4x4.TRS gets an invalid (zero-length)
+            // rotation, spams "Quaternion To Matrix conversion failed", and blits a garbage
+            // frame. Wait for both poses to be valid instead.
+            if (!IsValidRotation(poseL.rotation) || !IsValidRotation(poseR.rotation)) return;
             _mat.SetMatrix(IdWorldToCamL, Matrix4x4.TRS(poseL.position, poseL.rotation, Vector3.one).inverse);
             _mat.SetMatrix(IdWorldToCamR, Matrix4x4.TRS(poseR.position, poseR.rotation, Vector3.one).inverse);
 
@@ -244,6 +345,21 @@ namespace Gantasmo.Passthrough
             _mat.SetFloat(IdFlipY, flipY ? 1f : 0f);
 
             Graphics.Blit(Texture2D.blackTexture, _outRT, _mat);
+
+            // Augmented composite: aim the head-center MRC camera at the same virtual
+            // viewpoint as the stitch, then lay the virtual layer it rendered (into _augRT)
+            // over the fresh passthrough. The camera renders _augRT during the frame's render
+            // phase, so the virtual layer trails the passthrough by one frame — imperceptible
+            // for a VJ feed, and it avoids any render-order coupling.
+            if (composite3D && _augCam != null && _compositeRT != null && _compositeMat != null)
+            {
+                _augCam.transform.SetPositionAndRotation(midPos, midRot);
+                _augCam.aspect = aspect;
+                _augCam.fieldOfView = 2f * Mathf.Atan(tanH / Mathf.Max(1e-4f, aspect)) * Mathf.Rad2Deg;
+                _compositeMat.SetTexture(IdAugTex, _augRT);
+                _compositeMat.SetFloat(IdAugFlipV, flipAugmentationV ? 1f : 0f);
+                Graphics.Blit(_outRT, _compositeRT, _compositeMat); // _MainTex = passthrough
+            }
         }
 
         // Packs one camera's intrinsics (focal + principal) and crop region into the shader,
@@ -267,13 +383,22 @@ namespace Gantasmo.Passthrough
                 sensorRes.y * scale.y));
         }
 
+        // (0,0,0,0) has zero length and is not a valid rotation; a real pose quaternion is
+        // unit-length. Guards against the brief zero-pose window right after the cameras start.
+        static bool IsValidRotation(Quaternion q)
+            => (q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w) > 1e-6f;
+
         void OnDestroy()
         {
             if (_camL != null) Destroy(_camL.gameObject);
             if (_camR != null) Destroy(_camR.gameObject);
             if (_mat != null) Destroy(_mat);
             if (_previewMat != null) Destroy(_previewMat);
+            if (_compositeMat != null) Destroy(_compositeMat);
+            if (_augCam != null) Destroy(_augCam.gameObject);
             if (_outRT != null) { _outRT.Release(); Destroy(_outRT); }
+            if (_augRT != null) { _augRT.Release(); Destroy(_augRT); }
+            if (_compositeRT != null) { _compositeRT.Release(); Destroy(_compositeRT); }
         }
     }
 }
