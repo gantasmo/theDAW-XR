@@ -105,6 +105,17 @@ numbers into the 0-31 range before enabling it across the whole surface.
 `MidiButton.mode` also offers `ToggleCC`, which latches a CC between 0 and 127 on
 each press instead of sending notes.
 
+## Hand gestures (alongside the controls)
+
+Hands can also drive theDAW without touching a control. `MicrogestureMidiSource`
+(one component per hand) wraps the Quest microgesture recognizer and emits a momentary
+MIDI message on each recognized gesture. The defaults map Notes 48-52 to swipe left,
+swipe right, swipe forward, swipe backward, and thumb tap; set `emitAsControlChange` to
+send a 127-then-0 CC pulse instead. Each gesture is debounced and lands on the same
+`MidiControlSurface` channel, so it appears in theDAW's MIDI-learn next to the surface
+controls. Hand-pose recognition to MIDI is on the roadmap; microgestures and the
+grab/poke controls are what ship today.
+
 ## How it reaches theDAW
 
 `QuestMidiSender` frames each message and sends it over the localhost TCP socket

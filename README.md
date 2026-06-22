@@ -1,118 +1,154 @@
 # GANTASMO MIDI
 
-A **standalone Meta Quest 3 app** that turns hand-tracked XR interactions into MIDI
-and ships it to a desktop **WebMIDI DAW** (theDAW) over the **USB-C cable only** — no
-Wi-Fi, no network on stage. A return circuit lets the DAW drive a head-mounted,
-MIDI-reactive visor back on the headset.
+A standalone Meta Quest 3 app that turns the headset into a hands-only control and
+capture surface for **theDAW**. Hand tracking becomes MIDI that drives the DAW, the
+headset's passthrough view streams into the DAW's VJ engine as a live video source,
+and several headsets can share one physical space for co-located performance.
 
-The headset runs everything; the desktop just receives the MIDI signal (and, on the
-roadmap, the headset's video — see [Video feed](#video-feed-investigated-not-yet-built)).
+Every link rides plain ADB over the USB-C cable, or a wireless ADB pairing. No Quest
+Link tether and no Meta Quest Developer Hub (MQDH) casting are ever in the path, and
+nothing on the desktop needs OBS or a manually launched scrcpy.
 
 ```
-  ┌──────────────────────────  Quest 3 (standalone app)  ──────────────────────────┐
-  │  Hands ▸ GANTASMO XR MIDI Surface (sliders / knobs / buttons)                   │
-  │            │                                   ▲                                │
-  │            ▼                                   │                                │
-  │      QuestMidiSender  ──TCP 127.0.0.1──┐   GANTASMO Visor (reacts to return MIDI)│
-  └────────────────────────────────────────┼──────────────────────────────────────┘
-                                            │  adb reverse over USB-C
-                ┌───────────────────────────┴───────────────────────────┐
-                ▼                                                         ▲
-        bridge.js (Node, desktop)                                bridge.js (return)
-                │                                                         ▲
-                ▼                                                         │
-     loopMIDI "QuestMIDI"  ──▶  theDAW (WebMIDI)  ──▶  loopMIDI "QuestMIDI-Return"
+                 Quest 3  (standalone app, hands only)
+  +-------------------------------------------------------------------+
+  |  Hand-tracked MIDI surface + gestures   ->  QuestMidiSender       |
+  |  Passthrough view + MR composite        ->  display / H.264       |
+  |  Shared world frame + peer presence     ->  colocation netcode    |
+  +---------------------------------+---------------------------------+
+                                    |
+                                    |  ADB over USB-C  (or wireless ADB)
+                                    v
+  +-------------------------------------------------------------------+
+  |  theDAW  (desktop)                                                |
+  |   MIDI   ->  global MIDI bus  ->  MIDI-learn  ->  DJ / VJ / MAKE  |
+  |   video  ->  VJ camera source  (delinQuest / STITCH)             |
+  +-------------------------------------------------------------------+
 ```
+
+## What it does
+
+Three integrations, each usable on its own:
+
+1. **Hand tracking controls theDAW.** A floating 3D control surface (faders, knobs,
+   buttons, and a crossfader) plus hand microgestures emit MIDI. theDAW receives it
+   as an ordinary controller on its global MIDI bus, so any control maps to DJ, VJ,
+   MAKE, or EDIT through MIDI-learn. See
+   [the control surface README](Assets/QuestMidiBridge/Runtime/ControlSurface/README.md).
+2. **Passthrough streaming into the VJ.** The headset's view reaches theDAW's VJ as a
+   live video source over ADB, with no MQDH and no Quest Link. Two paths cover the
+   whole headset display and the clean real-world composite. See
+   [the passthrough README](Assets/GantasmoPassthrough/README.md).
+3. **Easy co-located multiplayer.** A one-click setup wizard wires shared-frame
+   alignment and lightweight peer presence so a room of headsets locks the surface
+   and visuals to the same physical spot. See
+   [the colocation README](Assets/GantasmoColocation/README.md).
 
 ## Modules
 
 | Folder | What it is | Docs |
 |---|---|---|
-| `Assets/QuestMidiBridge/` | The send path: `QuestMidiSender` + the Node desktop bridge + Setup Wizard | [README](Assets/QuestMidiBridge/README.md) |
-| `Assets/QuestMidiBridge/Runtime/ControlSurface/` | The floating 3D hand-tracked MIDI surface (default 8 sliders, 6 knobs, 12 buttons), built from an editable config preset | [README](Assets/QuestMidiBridge/Runtime/ControlSurface/README.md) |
-| `Assets/QuestMidiBridge/Bridge~/` | The desktop Node bridge (the `~` keeps it out of the APK) | [README](Assets/QuestMidiBridge/Bridge~/README.md) |
-| `Assets/GantasmoVisor/` | The receive path: a MIDI-reactive chrome visor driven by the DAW's return MIDI | [README](Assets/GantasmoVisor/README.md) |
-| `Assets/Editor/AndroidBuildFixes.cs` | Android/Gradle build workarounds for this project | — |
+| `Assets/QuestMidiBridge/` | The MIDI send and return path: `QuestMidiSender`, microgesture source, and the Setup Wizard | [README](Assets/QuestMidiBridge/README.md) |
+| `Assets/QuestMidiBridge/Runtime/ControlSurface/` | The floating 3D hand-tracked MIDI surface (faders, knobs, buttons, crossfader) built from an editable config preset, with an in-VR layout editor | [README](Assets/QuestMidiBridge/Runtime/ControlSurface/README.md) |
+| `Assets/GantasmoPassthrough/` | Passthrough stitch plus the H.264 streamer that feeds theDAW's VJ as the **STITCH** source | [README](Assets/GantasmoPassthrough/README.md) |
+| `Assets/GantasmoColocation/` | Co-located multiplayer: shared spatial frame and networked head and hand presence, with a setup wizard | [README](Assets/GantasmoColocation/README.md) |
+| `Assets/QuestMidiBridge/Bridge~/` | An optional desktop Node bridge for any WebMIDI DAW (the `~` keeps it out of the APK) | [README](Assets/QuestMidiBridge/Bridge~/README.md) |
 
 ## Requirements
 
-- **Unity 6.x** (this project: URP 17.4.0) on **Windows**.
+- **Unity 6.x** (this project: 6000.4.x, URP 17.4.0) on **Windows**.
 - **Meta XR SDK** `com.meta.xr.sdk.all` 203.0.0 (Interaction SDK + Building Blocks).
-- A **Quest 3** in Developer Mode, Horizon OS **v203**.
-- **loopMIDI** (Tobias Erichsen) for the virtual MIDI ports.
-- **Node.js** for the desktop bridge; **adb** (Android platform-tools) for the USB tunnel.
-- A **WebMIDI DAW** (theDAW) to receive the `QuestMIDI` input.
+- A **Quest 3** in Developer Mode, Horizon OS **v203**, with hand tracking on.
+- **adb** (Android platform-tools) for the USB or wireless tunnel.
+- **theDAW** running on the same desktop, with its `questmidi`, `questcast`, and
+  `queststitch` backend modules enabled.
+- Colocation adds **Netcode for GameObjects** 2.12 + **Unity Transport** 2.7.2 (the
+  setup wizard installs the building blocks).
+- The optional Node bridge adds **Node.js** and **loopMIDI** (only for a WebMIDI DAW
+  other than theDAW).
 
 ## Quick start
 
 1. Open the project in Unity and load `Assets/Scenes/QuestMIDI.unity`.
-2. **Window ▸ Quest MIDI Bridge ▸ Setup Wizard** and work down the checklist:
-   - Quest developer-mode + USB debugging.
-   - Create two loopMIDI ports: **`QuestMIDI`** (Quest → DAW) and
-     **`QuestMIDI-Return`** (DAW → visor).
-   - Detect Node + adb, save the bridge config, start the bridge.
-   - **Step 8 – GANTASMO surface:** Build the XR MIDI surface (or Repair an existing one),
-     then **Validate scene wiring**.
-   - **Step 9 – Diagnostics:** confirm build target is Android and set a real Company
-     Name / Package Name before a production build.
-3. In theDAW's WebMIDI device list, select **QuestMIDI** as input. Map controls with MIDI-learn.
-4. Build & deploy the Android app to the Quest, or press **Play** in the Editor to test
-   the whole chain on your desk first (see below).
+2. **Window > Quest MIDI Bridge > Setup Wizard** and work down the checklist
+   (developer mode, ADB detection, bridge config). **Step 8** builds or repairs the
+   XR MIDI surface and validates the scene wiring.
+3. Enable **theDAW**'s `questmidi` backend module. With theDAW open, its MIDI input
+   list shows the headset's controls on the global MIDI bus; map them with MIDI-learn.
+4. Build and deploy the Android app to the Quest, or press **Play** in the Editor to
+   test the MIDI chain on the desk first (see below).
+5. For video, select **delinQuest** or **STITCH** in theDAW's VJ source list; the
+   backend starts the relay it needs. See the
+   [passthrough README](Assets/GantasmoPassthrough/README.md).
+6. For a multi-headset set, run the colocation **Setup Wizard** on each headset. See
+   the [colocation README](Assets/GantasmoColocation/README.md).
+
+## How MIDI reaches theDAW
+
+The simplest route uses no extra desktop software. `QuestMidiSender` frames each
+message and sends it over a localhost TCP socket that `adb reverse` tunnels across the
+cable. theDAW's `questmidi` backend module listens on that socket and republishes the
+MIDI onto the browser's global MIDI bus, where it behaves like any hardware controller
+and is mappable across DJ, VJ, MAKE, and EDIT.
+
+The bridge is two-way: theDAW can send MIDI back to the headset over the same socket,
+which app-side receivers can react to.
+
+A second route exists for any WebMIDI DAW that is not theDAW: the desktop Node bridge
+in `Bridge~/` relays the same TCP frames into a **loopMIDI** virtual port that the DAW
+opens as an ordinary MIDI input. Use one route or the other, not both at once.
+
+## Streaming, without MQDH or Quest Link
+
+Two independent video paths reach theDAW's VJ engine, both over ADB:
+
+- **delinQuest** mirrors the entire headset display (the mixed-reality scene plus the
+  performer's MIDI surface) into the VJ. The `questcast` backend module runs a relay
+  that speaks the scrcpy protocol to the headset and streams H.264 to the browser,
+  decoded with WebCodecs.
+- **STITCH** streams only the clean stitched passthrough, the real-world composite
+  without the overlaid surface, as a separate source. `GantasmoStitchStreamer` encodes
+  the stitch render texture with Android MediaCodec and sends it over an ADB-reversed
+  socket to the `queststitch` backend bridge.
+
+Neither path opens a Quest Link session or uses MQDH casting. The headset only needs
+USB debugging enabled, or a wireless ADB pairing. Details:
+[passthrough README](Assets/GantasmoPassthrough/README.md).
 
 ## Testing without the headset
 
-Press **Play** in the Editor with the bridge running. `QuestMidiSender` connects to the
-PC's own `127.0.0.1`, so the full path (Unity → bridge → loopMIDI → DAW) works at your
-desk. `adb reverse` only matters once the app runs *on the headset*.
+Press **Play** in the Editor with theDAW running. `QuestMidiSender` connects to the
+PC's own `127.0.0.1`, so the full MIDI path works on the desk. `adb reverse` only
+matters once the app runs on the headset. The MediaCodec video encoder is Android-only,
+so the streaming picture needs a real device, but the editor still exercises the relay
+plumbing.
 
 ## Troubleshooting
 
-**Sliders/knobs don't move or send MIDI (buttons work).**
-The surface's sliders/knobs need a `HandGrabInteractable` — the Building Blocks
-comprehensive rig has hand-grab + poke interactors but **no plain `GrabInteractor`**, so
-a bare `GrabInteractable` is never grabbed and the handle never moves. Run
-**`GANTASMO ▸ Repair XR MIDI Surface Interactions`** (or the wizard's *Repair Interactions*
-button). Freshly built surfaces already include it. Details:
+**Sliders or knobs do not move or send MIDI (buttons work).**
+The surface's sliders and knobs need a `HandGrabInteractable`. The Building Blocks
+comprehensive rig ships hand-grab and poke interactors but no plain `GrabInteractor`,
+so a bare `GrabInteractable` is never grabbed and the handle never moves. Run
+**`GANTASMO > Repair XR MIDI Surface Interactions`** (or the wizard's *Repair
+Interactions* button). Freshly built surfaces already include it. Details:
 [ControlSurface README](Assets/QuestMidiBridge/Runtime/ControlSurface/README.md#sliderssknobs-do-nothing-repair-an-older-surface).
 
-**No MIDI reaches the DAW.** Confirm the bridge console is running, the loopMIDI port
-name matches the wizard exactly, and `adb reverse tcp:8765 tcp:8765` is set (wizard has a
-one-click button). The sender's TCP port must match `bridge-config.json`.
+**No MIDI reaches the DAW.** Confirm `adb reverse` is set (the wizard has a one-click
+button and theDAW's module sets it on start), the sender's TCP port matches, and the
+`questmidi` module is enabled in theDAW.
 
-**Visor doesn't react.** It listens on the **return** port; make sure `QuestMIDI-Return`
-exists and the DAW is sending to it on the channel the visor expects.
+**No video in the VJ.** Confirm the headset is listed by `adb devices`, USB debugging
+is accepted on the headset, and the matching backend module (`questcast` for
+delinQuest, `queststitch` for STITCH) is enabled. For STITCH, the scene must contain a
+`GantasmoStitchStreamer`; the `GANTASMO > Add Passthrough Stitch To Scene` menu adds it.
 
-## Video feed (investigated, not yet built)
+## Project notes
 
-Goal: stream the headset's **mixed-reality POV** (passthrough + the 3D objects) to stage
-monitors driven by the same PC as theDAW, ideally **without** Meta Quest Developer Hub
-(MQDH) in the path. Status of the investigation:
-
-- **theDAW's VJ sidecar (VJ-9000) has no network video ingest today.** Its only camera
-  input is `getUserMedia` (an OS-level camera device) plus file clips. So any feed has to
-  reach the host either as a **virtual webcam** or via an **ingest path that must first be
-  added to the VJ**.
-- **Works now (with MQDH):** MQDH/native casting mirrors the headset → capture that window
-  in OBS → **OBS Virtual Camera** → it appears in the VJ's camera list. Zero code, but
-  carries MQDH + OBS latency.
-- **Bypassing MQDH is not impossible** — it's an engineering task on code we own. Because
-  the app owns its frames, it can emit video itself (WebRTC sender from the app + a WebRTC
-  receiver added to the VJ; signaling over the existing backend). The genuinely hard part
-  for *this* POV is that **passthrough is composited by the OS, not in the app's
-  framebuffer**, so capturing the true MR view means either OS-level capture or pulling the
-  real camera frames via Meta's **Passthrough Camera API** (available on v203) and
-  re-compositing in-app before streaming.
-
-This is design-only so far; nothing here ships video yet.
-
-## Known limitations / pre-release notes
-
-- **Not a UPM package** (no asmdefs). It ships as a Unity project + desktop bridge.
-- `Bridge~/node_modules/` is present for local runs — **exclude it from any release artifact**
-  (the bridge re-installs from `package.json`).
-- `Bridge~/package.json` floats `@julusian/midi`; pin it before cutting a release.
-- App identity defaults (`DefaultCompany`, `com.UnityTechnologies…urpblank`) must be set.
-- This is a Unity Version Control (Plastic) workspace, **not** Git — exact change history
-  needs the Plastic CLI (`cm`) on PATH.
-</content>
-</invoke>
+- Source control is **Git** (`gantasmo/GANTASMO-MIDI`). A Unity Version Control
+  (Plastic) workspace also lives alongside it; the `.plastic/` folder is gitignored.
+- **Not a UPM package** (no asmdefs). It ships as a Unity project plus the optional
+  desktop bridge.
+- `Bridge~/node_modules/` is present for local runs. Exclude it from any release
+  artifact; the bridge re-installs from `package.json`.
+- App identity defaults (`DefaultCompany`, the `com.UnityTechnologies...urpblank`
+  package name) must be set before a production build.

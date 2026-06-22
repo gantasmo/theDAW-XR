@@ -9,8 +9,7 @@ IN   DAW --> loopMIDI "QuestMIDI-Return" --> bridge.js --> [adb reverse over USB
 ```
 
 The **IN** path completes the circuit: whatever the DAW writes to the return port
-is forwarded to the headset, where the **GANTASMO Visor** (and any other
-receiver) reacts to it live.
+is forwarded to the headset, where any app-side receiver can react to it live.
 
 ## One-time setup
 1. Install **Node.js**: https://nodejs.org (LTS is fine).

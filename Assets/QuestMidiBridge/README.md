@@ -3,6 +3,11 @@
 Send MIDI from a **standalone Quest 3 Unity app** to a **WebMIDI desktop DAW**,
 over the **USB-C cable only** (no Wi-Fi). Built for Unity 6.4 on Windows.
 
+> For **theDAW** specifically, the loopMIDI step is optional. theDAW's `questmidi`
+> backend module reads the bridge's TCP frames directly and republishes them on its
+> global MIDI bus, so no virtual port or Node bridge is needed. The loopMIDI path
+> below is the general route for any other WebMIDI DAW.
+
 ```
 Quest hand interactions
       |
