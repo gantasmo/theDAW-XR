@@ -10,6 +10,39 @@
       },
       "hash": "78ee5418415953b79c358bfe6355fcc3fde7912b"
     },
+    "com.gantasmo.colocation": {
+      "version": "file:com.gantasmo.colocation",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.netcode.gameobjects": "2.12.0"
+      }
+    },
+    "com.gantasmo.midi-reactor": {
+      "version": "file:com.gantasmo.midi-reactor",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.gantasmo.questmidi": "0.1.0"
+      }
+    },
+    "com.gantasmo.passthrough": {
+      "version": "file:com.gantasmo.passthrough",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.meta.xr.sdk.core": "203.0.0",
+        "com.meta.xr.mrutilitykit": "203.0.0"
+      }
+    },
+    "com.gantasmo.questmidi": {
+      "version": "file:com.gantasmo.questmidi",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.meta.xr.sdk.interaction": "203.0.0"
+      }
+    },
     "com.meta.xr.mrutilitykit": {
       "version": "203.0.0",
       "depth": 1,

@@ -1,0 +1,19 @@
+{
+    "name": "Gantasmo.Passthrough",
+    "rootNamespace": "",
+    "references": [
+        "meta.xr.mrutilitykit",
+        "Meta.XR.EnvironmentDepth",
+        "Unity.Burst",
+        "Unity.Collections"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

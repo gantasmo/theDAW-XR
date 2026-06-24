@@ -19,6 +19,7 @@ source, and several headsets share one physical room for co-located performance.
 ![Companion](https://img.shields.io/badge/companion-theDAW-7C3AED)
 ![Link](https://img.shields.io/badge/link-ADB%20only%2C%20no%20MQDH%20or%20Quest%20Link-0A9396)
 ![Status](https://img.shields.io/badge/status-active%20development-F4A261)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Every link between the headset and the desktop rides plain ADB over the USB-C cable, or a
 wireless ADB pairing. Quest Link tethering and Meta Quest Developer Hub (MQDH) casting are
@@ -71,14 +72,34 @@ Four integrations make up theDAW XR, and each one is usable on its own.
 
 ## Modules
 
-| Folder | Contents | Documentation |
+The features ship as four embedded UPM packages under `Packages/`. The Quest MIDI package is
+the core; MIDI Reactor depends on it, and Passthrough and Colocation stand alone.
+
+| Package | Contents | Documentation |
 |---|---|---|
-| [`Assets/QuestMidiBridge/`](Assets/QuestMidiBridge/README.md) | The MIDI send-and-return path: `QuestMidiSender`, the microgesture source, and the Setup Wizard | [README](Assets/QuestMidiBridge/README.md) |
-| [`Assets/QuestMidiBridge/Runtime/ControlSurface/`](Assets/QuestMidiBridge/Runtime/ControlSurface/README.md) | The floating 3D hand-tracked MIDI surface built from an editable config preset, with an in-VR layout editor | [README](Assets/QuestMidiBridge/Runtime/ControlSurface/README.md) |
-| [`Assets/GantasmoPassthrough/`](Assets/GantasmoPassthrough/README.md) | The passthrough stitch and the H.264 streamer that feeds theDAW's VJ as the **STITCH** source | [README](Assets/GantasmoPassthrough/README.md) |
-| [`Assets/GantasmoColocation/`](Assets/GantasmoColocation/README.md) | Co-located multiplayer: shared spatial frame and networked head-and-hand presence, with a setup wizard | [README](Assets/GantasmoColocation/README.md) |
-| [`Assets/GantasmoVisor/`](Assets/GantasmoVisor/README.md) | The MIDI Reactor, a head-mounted reactive chrome driven by the return circuit | [README](Assets/GantasmoVisor/README.md) |
-| [`Assets/QuestMidiBridge/Bridge~/`](Assets/QuestMidiBridge/Bridge~/README.md) | An optional desktop Node bridge for any other WebMIDI DAW (the `~` keeps it out of the APK) | [README](Assets/QuestMidiBridge/Bridge~/README.md) |
+| [`com.gantasmo.questmidi`](Packages/com.gantasmo.questmidi/README.md) | The MIDI send-and-return path: `QuestMidiSender`, the microgesture source, and the Setup Wizard. The core the other packages build on. | [README](Packages/com.gantasmo.questmidi/README.md) |
+| [`.../Runtime/ControlSurface/`](Packages/com.gantasmo.questmidi/Runtime/ControlSurface/README.md) | The floating 3D hand-tracked MIDI surface built from an editable config preset, with an in-VR layout editor | [README](Packages/com.gantasmo.questmidi/Runtime/ControlSurface/README.md) |
+| [`com.gantasmo.midi-reactor`](Packages/com.gantasmo.midi-reactor/README.md) | The MIDI Reactor, a head-mounted reactive chrome driven by the return circuit (depends on Quest MIDI) | [README](Packages/com.gantasmo.midi-reactor/README.md) |
+| [`com.gantasmo.passthrough`](Packages/com.gantasmo.passthrough/README.md) | The passthrough stitch and the H.264 streamer that feeds theDAW's VJ as the **STITCH** source | [README](Packages/com.gantasmo.passthrough/README.md) |
+| [`com.gantasmo.colocation`](Packages/com.gantasmo.colocation/README.md) | Co-located multiplayer: shared spatial frame and networked head-and-hand presence, with a setup wizard | [README](Packages/com.gantasmo.colocation/README.md) |
+| [`Bridge~/`](Assets/QuestMidiBridge/Bridge~/README.md) | An optional desktop Node bridge for any other WebMIDI DAW (the `~` keeps it out of the APK) | [README](Assets/QuestMidiBridge/Bridge~/README.md) |
+
+## Install
+
+Each feature is an embedded package and installs over a git URL through **Window > Package
+Manager > Add package from git URL**:
+
+| Package | Git URL |
+|---|---|
+| Quest MIDI (core) | `https://github.com/gantasmo/theDAW-XR.git?path=/Packages/com.gantasmo.questmidi` |
+| MIDI Reactor | `https://github.com/gantasmo/theDAW-XR.git?path=/Packages/com.gantasmo.midi-reactor` |
+| Passthrough Stitch | `https://github.com/gantasmo/theDAW-XR.git?path=/Packages/com.gantasmo.passthrough` |
+| Colocation | `https://github.com/gantasmo/theDAW-XR.git?path=/Packages/com.gantasmo.colocation` |
+
+Append `#<tag>` to pin a release. MIDI Reactor depends on Quest MIDI, so Quest MIDI installs
+first over a git URL (UPM does not resolve package dependencies across git URLs). An OpenUPM
+listing, where dependencies resolve automatically, is the planned distribution; the full
+process lives in [docs/PUBLISHING.md](docs/PUBLISHING.md).
 
 ## Requirements
 
@@ -163,7 +184,7 @@ flowchart LR
 
 Neither path opens a Quest Link session and neither uses MQDH casting. The headset needs
 only USB debugging enabled, or a wireless ADB pairing. Details live in the
-[passthrough README](Assets/GantasmoPassthrough/README.md).
+[passthrough README](Packages/com.gantasmo.passthrough/README.md).
 
 ## Co-located performance
 
@@ -181,7 +202,7 @@ Discovery and group-shared spatial anchors, so the surface and visuals occupy th
 physical place for everyone. Each headset broadcasts a lightweight head-and-hands proxy
 over Netcode for GameObjects on a LAN-direct transport, with no cloud relay and no external
 account. The existing ADB sockets keep carrying video and MIDI; the netcode handles only
-presence. The [colocation README](Assets/GantasmoColocation/README.md) covers the manual
+presence. The [colocation README](Packages/com.gantasmo.colocation/README.md) covers the manual
 Meta platform gates.
 
 ## Testing without the headset
@@ -220,7 +241,7 @@ and poke interactors but no plain `GrabInteractor`, so a bare `GrabInteractable`
 grabbed and the handle never moves. Run **GANTASMO > Control Surface > Repair XR MIDI
 Surface Interactions** (or the wizard's *Repair Interactions* button). Freshly built
 surfaces already include it. Details are in the
-[control surface README](Assets/QuestMidiBridge/Runtime/ControlSurface/README.md#slidersknobs-do-nothing-repair-an-older-surface).
+[control surface README](Packages/com.gantasmo.questmidi/Runtime/ControlSurface/README.md#slidersknobs-do-nothing-repair-an-older-surface).
 
 **No MIDI reaches the DAW.** Confirm `adb reverse` is set (the wizard has a one-click
 button and theDAW's module sets it on start), the sender's TCP port matches, and the
@@ -236,8 +257,10 @@ adds.
 
 - Source control is **Git** (`gantasmo/theDAW-XR`). A Unity Version Control (Plastic)
   workspace also lives alongside it, and the `.plastic/` folder is gitignored.
-- The repository ships as a **Unity project plus the optional desktop bridge**, not a UPM
-  package (there are no asmdefs).
+- The features ship as four **embedded UPM packages** under `Packages/com.gantasmo.*`, each
+  with its own assembly definitions. The Quest MIDI package is the core; MIDI Reactor depends
+  on it, while Passthrough and Colocation stand alone. Generated assets (surface configs,
+  prefabs, materials) are written into the consuming project's `Assets/`, not the packages.
 - `Bridge~/node_modules/` is present for local runs and should be excluded from any release
   artifact; the bridge re-installs from `package.json`.
 - The app identity defaults (`DefaultCompany`, the `com.UnityTechnologies...urpblank`

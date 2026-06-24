@@ -1,0 +1,27 @@
+{
+  "name": "com.gantasmo.midi-reactor",
+  "version": "0.1.0",
+  "displayName": "theDAW XR - MIDI Reactor",
+  "description": "A head-mounted, MIDI-reactive chrome driven by theDAW's return MIDI. The receive-side companion to Quest MIDI.",
+  "unity": "6000.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gantasmo/theDAW-XR.git",
+    "directory": "Packages/com.gantasmo.midi-reactor"
+  },
+  "dependencies": {
+    "com.gantasmo.questmidi": "0.1.0"
+  },
+  "keywords": [
+    "midi",
+    "quest",
+    "reactive",
+    "visuals",
+    "xr",
+    "thedaw"
+  ],
+  "author": {
+    "name": "GANTASMO"
+  }
+}
