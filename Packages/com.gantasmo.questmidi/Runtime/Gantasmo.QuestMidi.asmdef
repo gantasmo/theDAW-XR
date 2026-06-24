@@ -1,0 +1,17 @@
+{
+    "name": "Gantasmo.QuestMidi",
+    "rootNamespace": "",
+    "references": [
+        "Oculus.Interaction",
+        "Oculus.VR"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -9,6 +9,10 @@
 [Mm]emoryCaptures/
 [Rr]ecordings/
 
+# Unity scene auto-recovery dumps (not project assets)
+/[Aa]ssets/_[Rr]ecovery/
+/[Aa]ssets/_[Rr]ecovery.meta
+
 # Asset meta files must NOT be ignored when their asset is tracked
 !/[Aa]ssets/**/*.meta
 

@@ -1,0 +1,27 @@
+{
+  "name": "com.gantasmo.questmidi",
+  "version": "0.1.0",
+  "displayName": "theDAW XR - Quest MIDI",
+  "description": "Hand-tracked 3D MIDI control surface plus a two-way Quest-to-DAW MIDI bridge for theDAW XR. The core feature the others build on.",
+  "unity": "6000.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gantasmo/theDAW-XR.git",
+    "directory": "Packages/com.gantasmo.questmidi"
+  },
+  "dependencies": {
+    "com.meta.xr.sdk.interaction": "203.0.0"
+  },
+  "keywords": [
+    "midi",
+    "quest",
+    "hand-tracking",
+    "xr",
+    "control-surface",
+    "thedaw"
+  ],
+  "author": {
+    "name": "GANTASMO"
+  }
+}

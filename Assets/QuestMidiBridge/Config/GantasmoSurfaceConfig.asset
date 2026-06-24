@@ -12,44 +12,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9730ef6630d9b89438ff5ef527d9c862, type: 3}
   m_Name: GantasmoSurfaceConfig
   m_EditorClassIdentifier: Assembly-CSharp-Editor::Gantasmo.XRMidi.EditorTools.GantasmoSurfaceConfig
-  position: {x: 0, y: 1.1, z: 0.3}
-  eulerAngles: {x: -0, y: 180, z: 0}
-  hamburgerPosition: {x: 0.384, y: -0.09608126, z: 0.0003174581}
+  position: {x: 0, y: 1.05, z: 0.4}
+  eulerAngles: {x: 315, y: 180, z: 0}
+  hamburgerPosition: {x: 0.492, y: -0.14699998, z: 0.019000009}
   editRigPosition: {x: 0, y: 0, z: 0}
   channel: 1
   highResolution: 0
   sliders:
-    count: 8
-    columns: 8
-    spacing: {x: 0.1, y: 0.16}
-    origin: {x: 0, y: 0.34, z: 0}
+    count: 6
+    columns: 6
+    spacing: {x: 0.1, y: 0.13}
+    origin: {x: 0, y: 0, z: 0}
     scale: {x: 1, y: 1, z: 1}
     material: {fileID: 0}
     customPrefab: {fileID: 0}
     positionOverrides:
-    - {x: -0.628, y: 0.08000004, z: 0.17829998}
-    - {x: -0.538, y: 0.120000005, z: 0.05943222}
-    - {x: -0.384, y: 0.13837004, z: -0.059435133}
-    - {x: 0.187, y: 0.13837004, z: -0.101000026}
-    - {x: -0.188, y: 0.13837004, z: -0.100999996}
-    - {x: 0.37363142, y: 0.13837004, z: -0.05900928}
-    - {x: 0.548, y: 0.120000005, z: 0.059009273}
-    - {x: 0.606403, y: 0.08000004, z: 0.17631702}
+    - {x: -0.649, y: -0.03200004, z: 0.044999976}
+    - {x: -0.39, y: 0.097999975, z: 0.09899996}
+    - {x: -0.12977, y: 0.17195001, z: 0.11573999}
+    - {x: 0.12977, y: 0.17194998, z: 0.11574}
+    - {x: 0.389, y: 0.09799996, z: 0.09899996}
+    - {x: 0.649, y: -0.03200004, z: 0.04499997}
     rotationOverrides:
-    - {x: -0, y: 45.941105, z: 0}
-    - {x: -0, y: 30.000008, z: 0}
-    - {x: -0, y: 14.999995, z: 0}
-    - {x: -0, y: 0, z: 0}
-    - {x: -0, y: 0, z: 0}
-    - {x: -0, y: 344.99997, z: 0}
-    - {x: -0, y: 330, z: 0}
-    - {x: -0, y: 314.68732, z: 0}
+    - {x: 41.954605, y: -0.0000019632448, z: 0.0000019632407}
+    - {x: 41.954605, y: -0.0000019632448, z: 0.0000019632407}
+    - {x: 41.954605, y: -0.0000019632448, z: 0.0000019632407}
+    - {x: 41.954605, y: -0.0000019632448, z: 0.0000019632407}
+    - {x: 41.954605, y: -0.0000019632448, z: 0.0000019632407}
+    - {x: 41.954605, y: -0.0000019632448, z: 0.0000019632407}
     ccStart: 1
     travel: 0.12
     axis: 1
     bipolar: 0
   crossfade:
     count: 1
+    columns: 1
+    spacing: {x: 0.1, y: 0.13}
+    origin: {x: 0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    material: {fileID: 0}
+    customPrefab: {fileID: 0}
+    positionOverrides:
+    - {x: -0.15, y: -0.25599998, z: 0.009999931}
+    rotationOverrides:
+    - {x: -0, y: 0, z: 0}
+    ccStart: 7
+    travel: 0.3
+    axis: 0
+    bipolar: 1
+  knobs:
+    count: 8
     columns: 8
     spacing: {x: 0.1, y: 0.13}
     origin: {x: 0, y: 0, z: 0}
@@ -57,35 +69,23 @@ MonoBehaviour:
     material: {fileID: 0}
     customPrefab: {fileID: 0}
     positionOverrides:
-    - {x: -0.061, y: 0.13837004, z: -0.107}
+    - {x: -0.5, y: -0.08079997, z: 0.054400012}
+    - {x: -0.357, y: 0.0022, z: 0.054400012}
+    - {x: -0.214, y: 0.058200024, z: 0.0544}
+    - {x: -0.071, y: 0.08620002, z: 0.054400016}
+    - {x: 0.071, y: 0.08620001, z: 0.054400023}
+    - {x: 0.214, y: 0.058200017, z: 0.054400012}
+    - {x: 0.357, y: 0.0021999963, z: 0.054400012}
+    - {x: 0.5, y: -0.08079999, z: 0.05440004}
     rotationOverrides:
-    - {x: -0, y: 0, z: 0}
-    ccStart: 4
-    travel: 0.12
-    axis: 0
-    bipolar: 1
-  knobs:
-    count: 6
-    columns: 6
-    spacing: {x: 0.12, y: 0.12}
-    origin: {x: 0, y: 0.06, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-    material: {fileID: 0}
-    customPrefab: {fileID: 0}
-    positionOverrides:
-    - {x: -0.448, y: 0.049000025, z: -0.033000004}
-    - {x: -0.269, y: 0.049000025, z: -0.032999985}
-    - {x: -0.089, y: 0.049000025, z: -0.033}
-    - {x: 0.09, y: 0.049000025, z: -0.033000015}
-    - {x: 0.27, y: 0.049000025, z: -0.033}
-    - {x: 0.449, y: 0.049000025, z: -0.03300001}
-    rotationOverrides:
-    - {x: 353.40268, y: 0.000000033389302, z: -0.0000005793177}
-    - {x: 353.40268, y: 0.000000033389302, z: -0.0000005793177}
-    - {x: 353.40268, y: 0.000000033389302, z: -0.0000005793177}
-    - {x: 353.40268, y: 0.000000033389302, z: -0.0000005793177}
-    - {x: 353.40268, y: 0.000000033389302, z: -0.0000005793177}
-    - {x: 353.40268, y: 0.000000033389302, z: -0.0000005793177}
+    - {x: 29.649996, y: 5.549338e-13, z: 3.522532e-13}
+    - {x: 29.649996, y: 5.549338e-13, z: 3.522532e-13}
+    - {x: 29.649996, y: 5.549338e-13, z: 3.522532e-13}
+    - {x: 29.649996, y: 5.549338e-13, z: 3.522532e-13}
+    - {x: 29.649996, y: 5.549338e-13, z: 3.522532e-13}
+    - {x: 29.649996, y: 5.549338e-13, z: 3.522532e-13}
+    - {x: 29.649996, y: 5.549338e-13, z: 3.522532e-13}
+    - {x: 29.649996, y: 5.549338e-13, z: 3.522532e-13}
     ccStart: 40
     minAngle: -135
     maxAngle: 135
@@ -93,37 +93,156 @@ MonoBehaviour:
   buttons:
     count: 12
     columns: 6
-    spacing: {x: 0.1, y: 0.11}
-    origin: {x: 0, y: -0.16, z: 0}
+    spacing: {x: 0.1, y: 0.13}
+    origin: {x: 0, y: 0, z: 0}
     scale: {x: 1, y: 1, z: 1}
     material: {fileID: 0}
     customPrefab: {fileID: 0}
     positionOverrides:
-    - {x: -0.25, y: -0.08186698, z: -0.036511295}
-    - {x: -0.15, y: -0.08186698, z: -0.036511287}
-    - {x: -0.05, y: -0.08186698, z: -0.036511306}
-    - {x: 0.05, y: -0.08186698, z: -0.0365113}
-    - {x: 0.15, y: -0.08186698, z: -0.036511317}
-    - {x: 0.25, y: -0.08186698, z: -0.03651131}
-    - {x: -0.25, y: -0.16413313, z: 0.03651119}
-    - {x: -0.15, y: -0.16413313, z: 0.036511198}
-    - {x: -0.05, y: -0.16413313, z: 0.03651118}
-    - {x: 0.05, y: -0.16413313, z: 0.036511187}
-    - {x: 0.15, y: -0.16413313, z: 0.036511168}
-    - {x: 0.25, y: -0.16413313, z: 0.036511175}
+    - {x: -0.4, y: -0.084000036, z: 0.015999965}
+    - {x: -0.24, y: -0.06499997, z: 0.016000047}
+    - {x: -0.08, y: -0.055000007, z: 0.016000014}
+    - {x: 0.08, y: -0.055, z: 0.015999991}
+    - {x: 0.24, y: -0.06499996, z: 0.016000032}
+    - {x: 0.4, y: -0.08400002, z: 0.01599995}
+    - {x: -0.4, y: -0.17999999, z: -0.000000014901161}
+    - {x: -0.24, y: -0.18, z: 0}
+    - {x: -0.08, y: -0.18000002, z: 0.000000014901161}
+    - {x: 0.08, y: -0.18000002, z: 0.000000014901161}
+    - {x: 0.24, y: -0.18, z: 0}
+    - {x: 0.4, y: -0.18, z: 0}
     rotationOverrides:
-    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
-    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
-    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
-    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
-    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
-    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
-    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
-    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
-    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
-    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
-    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
-    - {x: 318.40588, y: -1.9316291e-13, z: 1.1698044e-13}
+    - {x: -0.0000004514299, y: 0.000001045875, z: 16.000008}
+    - {x: -0.0000007266685, y: 0.000000036978253, z: 9.599998}
+    - {x: -0.00000068116134, y: -0.0000001700714, z: 3.1999998}
+    - {x: -0.0000004978294, y: -0.00000035029115, z: 356.8}
+    - {x: 0.00000006343419, y: 0.0000022883628, z: 350.4}
+    - {x: 0.00000075612314, y: 0.00000046257566, z: 344}
+    - {x: -0, y: 0, z: 0}
+    - {x: -0, y: 0, z: 0}
+    - {x: -0, y: 0, z: 0}
+    - {x: -0, y: 0, z: 0}
+    - {x: -0, y: 0, z: 0}
+    - {x: -0, y: 0, z: 0}
     noteStart: 36
     mode: 0
     velocity: 110
+  materialBindings:
+  - path: Slider_1/Track
+    material: {fileID: 2100000, guid: 9d73f41c7719ba2449097a8c12e0a3aa, type: 2}
+  - path: Slider_1/Handle/Cap
+    material: {fileID: 2100000, guid: 2edb876ca20f6ea40b4ebb61f96f1df1, type: 2}
+  - path: Slider_2/Track
+    material: {fileID: 2100000, guid: 9d73f41c7719ba2449097a8c12e0a3aa, type: 2}
+  - path: Slider_2/Handle/Cap
+    material: {fileID: 2100000, guid: 2edb876ca20f6ea40b4ebb61f96f1df1, type: 2}
+  - path: Slider_3/Track
+    material: {fileID: 2100000, guid: 9d73f41c7719ba2449097a8c12e0a3aa, type: 2}
+  - path: Slider_3/Handle/Cap
+    material: {fileID: 2100000, guid: 2edb876ca20f6ea40b4ebb61f96f1df1, type: 2}
+  - path: Slider_4/Track
+    material: {fileID: 2100000, guid: 9d73f41c7719ba2449097a8c12e0a3aa, type: 2}
+  - path: Slider_4/Handle/Cap
+    material: {fileID: 2100000, guid: 2edb876ca20f6ea40b4ebb61f96f1df1, type: 2}
+  - path: Slider_5/Track
+    material: {fileID: 2100000, guid: 9d73f41c7719ba2449097a8c12e0a3aa, type: 2}
+  - path: Slider_5/Handle/Cap
+    material: {fileID: 2100000, guid: 2edb876ca20f6ea40b4ebb61f96f1df1, type: 2}
+  - path: Slider_6/Track
+    material: {fileID: 2100000, guid: 9d73f41c7719ba2449097a8c12e0a3aa, type: 2}
+  - path: Slider_6/Handle/Cap
+    material: {fileID: 2100000, guid: 2edb876ca20f6ea40b4ebb61f96f1df1, type: 2}
+  - path: Slider_7/Track
+    material: {fileID: 2100000, guid: 9d73f41c7719ba2449097a8c12e0a3aa, type: 2}
+  - path: Slider_7/Handle/Cap
+    material: {fileID: 2100000, guid: 2edb876ca20f6ea40b4ebb61f96f1df1, type: 2}
+  - path: Knob_40/Base
+    material: {fileID: -8848810374240701247, guid: cc9c4317471406d42958a59caba2291a, type: 3}
+  - path: Knob_40/Cap/Dial
+    material: {fileID: 2100000, guid: 6c72d2d2ead00e54db4b71b27ffb03d4, type: 2}
+  - path: Knob_40/Cap/Mark
+    material: {fileID: 2100000, guid: 54f7c59213ac02b4d9f00104348dbac3, type: 2}
+  - path: Knob_41/Base
+    material: {fileID: -8848810374240701247, guid: cc9c4317471406d42958a59caba2291a, type: 3}
+  - path: Knob_41/Cap/Dial
+    material: {fileID: 2100000, guid: 6c72d2d2ead00e54db4b71b27ffb03d4, type: 2}
+  - path: Knob_41/Cap/Mark
+    material: {fileID: 2100000, guid: 54f7c59213ac02b4d9f00104348dbac3, type: 2}
+  - path: Knob_42/Base
+    material: {fileID: -8848810374240701247, guid: cc9c4317471406d42958a59caba2291a, type: 3}
+  - path: Knob_42/Cap/Dial
+    material: {fileID: 2100000, guid: 6c72d2d2ead00e54db4b71b27ffb03d4, type: 2}
+  - path: Knob_42/Cap/Mark
+    material: {fileID: 2100000, guid: 54f7c59213ac02b4d9f00104348dbac3, type: 2}
+  - path: Knob_43/Base
+    material: {fileID: -8848810374240701247, guid: cc9c4317471406d42958a59caba2291a, type: 3}
+  - path: Knob_43/Cap/Dial
+    material: {fileID: 2100000, guid: 6c72d2d2ead00e54db4b71b27ffb03d4, type: 2}
+  - path: Knob_43/Cap/Mark
+    material: {fileID: 2100000, guid: 54f7c59213ac02b4d9f00104348dbac3, type: 2}
+  - path: Knob_44/Base
+    material: {fileID: -8848810374240701247, guid: cc9c4317471406d42958a59caba2291a, type: 3}
+  - path: Knob_44/Cap/Dial
+    material: {fileID: 2100000, guid: 6c72d2d2ead00e54db4b71b27ffb03d4, type: 2}
+  - path: Knob_44/Cap/Mark
+    material: {fileID: 2100000, guid: 54f7c59213ac02b4d9f00104348dbac3, type: 2}
+  - path: Knob_45/Base
+    material: {fileID: -8848810374240701247, guid: cc9c4317471406d42958a59caba2291a, type: 3}
+  - path: Knob_45/Cap/Dial
+    material: {fileID: 2100000, guid: 6c72d2d2ead00e54db4b71b27ffb03d4, type: 2}
+  - path: Knob_45/Cap/Mark
+    material: {fileID: 2100000, guid: 54f7c59213ac02b4d9f00104348dbac3, type: 2}
+  - path: Knob_46/Base
+    material: {fileID: -8848810374240701247, guid: cc9c4317471406d42958a59caba2291a, type: 3}
+  - path: Knob_46/Cap/Dial
+    material: {fileID: 2100000, guid: 6c72d2d2ead00e54db4b71b27ffb03d4, type: 2}
+  - path: Knob_46/Cap/Mark
+    material: {fileID: 2100000, guid: 54f7c59213ac02b4d9f00104348dbac3, type: 2}
+  - path: Knob_47/Base
+    material: {fileID: -8848810374240701247, guid: cc9c4317471406d42958a59caba2291a, type: 3}
+  - path: Knob_47/Cap/Dial
+    material: {fileID: 2100000, guid: 6c72d2d2ead00e54db4b71b27ffb03d4, type: 2}
+  - path: Knob_47/Cap/Mark
+    material: {fileID: 2100000, guid: 54f7c59213ac02b4d9f00104348dbac3, type: 2}
+  - path: Button_36/Cap/Button
+    material: {fileID: 2100000, guid: be3c68e7d11b1644d8a735236c8fd4ee, type: 2}
+  - path: Button_37/Cap/Button
+    material: {fileID: 2100000, guid: be3c68e7d11b1644d8a735236c8fd4ee, type: 2}
+  - path: Button_38/Cap/Button
+    material: {fileID: 2100000, guid: be3c68e7d11b1644d8a735236c8fd4ee, type: 2}
+  - path: Button_39/Cap/Button
+    material: {fileID: 2100000, guid: be3c68e7d11b1644d8a735236c8fd4ee, type: 2}
+  - path: Button_40/Cap/Button
+    material: {fileID: 2100000, guid: be3c68e7d11b1644d8a735236c8fd4ee, type: 2}
+  - path: Button_41/Cap/Button
+    material: {fileID: 2100000, guid: be3c68e7d11b1644d8a735236c8fd4ee, type: 2}
+  - path: Button_42/Cap/Button
+    material: {fileID: 2100000, guid: be3c68e7d11b1644d8a735236c8fd4ee, type: 2}
+  - path: Button_43/Cap/Button
+    material: {fileID: 2100000, guid: be3c68e7d11b1644d8a735236c8fd4ee, type: 2}
+  - path: Button_44/Cap/Button
+    material: {fileID: 2100000, guid: be3c68e7d11b1644d8a735236c8fd4ee, type: 2}
+  - path: Button_45/Cap/Button
+    material: {fileID: 2100000, guid: be3c68e7d11b1644d8a735236c8fd4ee, type: 2}
+  - path: Button_46/Cap/Button
+    material: {fileID: 2100000, guid: be3c68e7d11b1644d8a735236c8fd4ee, type: 2}
+  - path: Button_47/Cap/Button
+    material: {fileID: 2100000, guid: be3c68e7d11b1644d8a735236c8fd4ee, type: 2}
+  - path: Edit_ToggleEdit/Cap/Face
+    material: {fileID: 2100000, guid: f1f2579a20f9c4ec188026837735c4c1, type: 2}
+  - path: Edit_ToggleEdit/Cap/Bar0
+    material: {fileID: -8848810374240701247, guid: cc9c4317471406d42958a59caba2291a, type: 3}
+  - path: Edit_ToggleEdit/Cap/Bar1
+    material: {fileID: -8848810374240701247, guid: cc9c4317471406d42958a59caba2291a, type: 3}
+  - path: Edit_ToggleEdit/Cap/Bar2
+    material: {fileID: -8848810374240701247, guid: cc9c4317471406d42958a59caba2291a, type: 3}
+  - path: EditRig/Edit_Save/Cap/Face
+    material: {fileID: 2100000, guid: 4058b018c20319844b424c305af5b144, type: 2}
+  - path: EditRig/Move Handle
+    material: {fileID: 2100000, guid: 4058b018c20319844b424c305af5b144, type: 2}
+  - path: EditRig/Scale Handle (two hands)
+    material: {fileID: 2100000, guid: 4058b018c20319844b424c305af5b144, type: 2}
+  - path: EditRig/Rotate Handle (yaw)
+    material: {fileID: 2100000, guid: 4058b018c20319844b424c305af5b144, type: 2}
+  - path: EditRig/Edit_Cancel/Cap/Face
+    material: {fileID: 2100000, guid: 0e72fcb8c76a2874bb1e96d57f4dd37e, type: 2}

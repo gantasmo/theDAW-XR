@@ -1,0 +1,16 @@
+{
+    "name": "Gantasmo.MidiReactor",
+    "rootNamespace": "",
+    "references": [
+        "Gantasmo.QuestMidi"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

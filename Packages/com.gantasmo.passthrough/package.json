@@ -1,0 +1,28 @@
+{
+  "name": "com.gantasmo.passthrough",
+  "version": "0.1.0",
+  "displayName": "theDAW XR - Passthrough Stitch",
+  "description": "Streams the Quest's clean stitched passthrough into theDAW's VJ as the STITCH source over plain ADB, with no MQDH and no Quest Link.",
+  "unity": "6000.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gantasmo/theDAW-XR.git",
+    "directory": "Packages/com.gantasmo.passthrough"
+  },
+  "dependencies": {
+    "com.meta.xr.sdk.core": "203.0.0",
+    "com.meta.xr.mrutilitykit": "203.0.0"
+  },
+  "keywords": [
+    "passthrough",
+    "quest",
+    "vj",
+    "mixed-reality",
+    "h264",
+    "thedaw"
+  ],
+  "author": {
+    "name": "GANTASMO"
+  }
+}
