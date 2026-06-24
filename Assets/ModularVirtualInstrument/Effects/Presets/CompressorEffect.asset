@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea696ebd8a10604f9f8a10a1d6d4ec3, type: 3}
+  m_Name: CompressorEffect
+  m_EditorClassIdentifier: Assembly-CSharp::ModularVirtualInstrument.Effects.CompressorEffect 
+  effectName: Compressor
+  effectDescription: Controls dynamic range for punchier sound
+  threshold: 0.5
+  ratio: 4
+  attack: 0.01
+  release: 0.1
+  makeupGain: 1

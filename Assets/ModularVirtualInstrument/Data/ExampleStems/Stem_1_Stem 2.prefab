@@ -1,0 +1,236 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2419639073298511810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4729950734976028428}
+  - component: {fileID: 1155391650610352561}
+  - component: {fileID: 5735563133589358296}
+  - component: {fileID: 5368809376567971798}
+  - component: {fileID: 4903677469591101362}
+  m_Layer: 0
+  m_Name: Stem_1_Stem 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4729950734976028428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419639073298511810}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.98768836, z: -0, w: -0.1564345}
+  m_LocalPosition: {x: 0.25, y: 1.2, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1155391650610352561
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419639073298511810}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: e72fe52590beecb4f9364f16803bbcbc, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 159a272db5986ba4a8ae96e7656f9ec2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.7
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &5735563133589358296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419639073298511810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350ca8239032c8648b149a3a1e24222b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ModularVirtualInstrument.StemProcessor
+  stemData: {fileID: 11400000, guid: 488d75af44710494fb8a2508ca46015c, type: 2}
+  stemIndex: 1
+  audioSource: {fileID: 1155391650610352561}
+  spatialAudioCenter: {fileID: 0}
+  xAxis:
+    axis: 0
+    axisLabel: X-Axis
+    effect: {fileID: 11400000, guid: 039aaf18937750b43a2678ddf25d521c, type: 2}
+    currentValue: 0
+    smoothedValue: 0
+    invertAxis: 0
+    smoothingFactor: 0.8
+    enabled: 1
+  yAxis:
+    axis: 1
+    axisLabel: Y-Axis
+    effect: {fileID: 11400000, guid: 4b372034d559d39499f3a489a9ada253, type: 2}
+    currentValue: 0
+    smoothedValue: 0
+    invertAxis: 0
+    smoothingFactor: 0.8
+    enabled: 1
+  zAxis:
+    axis: 2
+    axisLabel: Z-Axis
+    effect: {fileID: 11400000, guid: 9996fae533174924fa4827e103158e04, type: 2}
+    currentValue: 0
+    smoothedValue: 0
+    invertAxis: 0
+    smoothingFactor: 0.8
+    enabled: 1
+  interactionBounds:
+    m_Center: {x: 0.25030383, y: 0.81, z: 0.77035576}
+    m_Extent: {x: 0.15, y: 0.15, z: 0.15}
+  showDebugBounds: 1
+  isHandInside: 0
+  normalizedHandPosition: {x: 0, y: 0, z: 0}
+  isFrozen: 0
+--- !u!114 &5368809376567971798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419639073298511810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa32af1473e45db469732fb19122b2cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ModularVirtualInstrument.StemVisualizer
+  stemProcessor: {fileID: 0}
+  showWireframe: 0
+  wireframeMaterial: {fileID: 0}
+  lineWidth: 0.01
+  emissionIntensity: 2
+  pulseSpeed: 1
+  showAxisIndicators: 1
+  axisIndicatorLength: 0.2
+  showHandTrail: 1
+  handTrailPrefab: {fileID: 0}
+  showEffectValues: 1
+  showCollisionIndicator: 1
+  collisionColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  frozenColor: {r: 0, g: 1, b: 1, a: 1}
+  frozenPulseSpeed: 0.3
+--- !u!169 &4903677469591101362
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419639073298511810}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 2
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

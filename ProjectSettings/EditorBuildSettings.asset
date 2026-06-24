@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/QuestMIDI.unity
-    guid: 9fc0aadee385ebf4c912ee20d00afe37
+    path: Assets/Scenes/theDAW-XR.unity
+    guid: 0edb0996135233543b6a8d8f7566bae1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2ea8d986fd9264b44a8df22b6c733252, type: 2}
