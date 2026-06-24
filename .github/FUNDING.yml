@@ -1,0 +1,15 @@
+# Funding configuration for theDAW XR and theDAW.
+#
+# GitHub renders a "Sponsor" button from this file. A button appears for a
+# platform once its account exists (and, for GitHub Sponsors, is approved).
+
+github: [gantasmo]            # verified active: https://github.com/sponsors/gantasmo
+
+# Uncomment and fill in any of these once the account exists. The value is the
+# username or slug only, not a full URL.
+# ko_fi: <username>           # https://ko-fi.com/<username>
+# open_collective: <slug>     # https://opencollective.com/<slug>
+# patreon: <username>
+# liberapay: <username>
+# buy_me_a_coffee: <username>
+# custom: ["https://gantasmo.com/support"]

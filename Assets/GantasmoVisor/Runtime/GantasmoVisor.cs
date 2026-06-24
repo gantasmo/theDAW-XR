@@ -5,34 +5,34 @@ using QuestMidiBridge;
 namespace Gantasmo
 {
     /// <summary>
-    /// GANTASMO VISOR — CHROME XXL 8008135.
+    /// GANTASMO MIDI Reactor.
     ///
-    /// A head-mounted, MIDI-reactive chrome visor. It procedurally builds a
-    /// curved chrome shield in front of the headset camera and drives its glow,
-    /// hue, pulse, and warp from MIDI arriving on the return circuit
-    /// (DAW → loopMIDI "QuestMIDI-Return" → bridge → QuestMidiSender → here).
+    /// MIDI Reactor: a head-mounted, MIDI-reactive chrome shield. It procedurally
+    /// builds a curved chrome shield in front of the headset camera and drives its
+    /// glow, hue, pulse, and warp from MIDI arriving on the return circuit
+    /// (DAW to loopMIDI "QuestMIDI-Return" to bridge to QuestMidiSender to here).
     ///
-    /// Drop-in: add this component (or use GANTASMO ▸ Add Visor) — it finds the
-    /// QuestMidiSender, mounts itself to the main camera, and builds its mesh +
-    /// chrome material at runtime. Nothing else to author.
+    /// Drop-in: add this component (or use GANTASMO > MIDI Reactor > Add To Scene);
+    /// it finds the QuestMidiSender, mounts itself to the main camera, and builds its
+    /// mesh and chrome material at runtime. Nothing else to author.
     /// </summary>
-    [AddComponentMenu("GANTASMO/GANTASMO Visor (Chrome XXL 8008135)")]
+    [AddComponentMenu("GANTASMO/MIDI Reactor")]
     public class GantasmoVisor : MonoBehaviour
     {
         [Header("MIDI source (auto-found if empty)")]
-        [Tooltip("The QuestMidiSender whose return-circuit events drive the visor. Found automatically if left empty.")]
+        [Tooltip("The QuestMidiSender whose return-circuit events drive the reactor. Found automatically if left empty.")]
         public QuestMidiSender sender;
 
         [Tooltip("Only react to this MIDI channel (1-16). 0 = accept all channels.")]
         [Range(0, 16)] public int channel = 0;
 
         [Header("Mount (auto = main camera)")]
-        [Tooltip("Transform the visor follows. Defaults to Camera.main (the headset eye) when empty.")]
+        [Tooltip("Transform the reactor follows. Defaults to Camera.main (the headset eye) when empty.")]
         public Transform mountTarget;
         [Tooltip("Distance in front of the eyes (metres).")] public float distance = 0.42f;
-        [Tooltip("Vertical offset; negative drops it toward a helmet-visor brim.")] public float verticalOffset = -0.05f;
-        [Tooltip("Horizontal sweep of the visor arc, degrees.")] [Range(40f, 200f)] public float arcDegrees = 150f;
-        [Tooltip("Visor height (metres).")] public float visorHeight = 0.14f;
+        [Tooltip("Vertical offset; negative drops it toward a helmet brim.")] public float verticalOffset = -0.05f;
+        [Tooltip("Horizontal sweep of the shield arc, degrees.")] [Range(40f, 200f)] public float arcDegrees = 150f;
+        [Tooltip("Shield height (metres).")] public float visorHeight = 0.14f;
 
         [Header("Chrome look")]
         public Color chromeColor = new Color(0.18f, 0.19f, 0.22f);
@@ -43,7 +43,7 @@ namespace Gantasmo
         [Tooltip("CC that sets the steady glow level.")] public int ccGlow = 1;
         [Tooltip("CC that shifts the hue.")] public int ccHue = 2;
         [Tooltip("CC that drives the warp/scale pulse (e.g. an energy/beat envelope).")] public int ccWarp = 3;
-        [Tooltip("How hard incoming notes flash the visor.")] [Range(0f, 4f)] public float noteFlash = 1.6f;
+        [Tooltip("How hard incoming notes flash the reactor.")] [Range(0f, 4f)] public float noteFlash = 1.6f;
         [Tooltip("Flash/decay speed.")] public float decay = 3.5f;
 
         // ---- runtime state -------------------------------------------------
@@ -136,7 +136,7 @@ namespace Gantasmo
             _mat.SetColor(_EmissionColor, shifted * intensity);
             _mat.SetColor(_BaseColor, Color.Lerp(chromeColor, shifted * 0.4f, _glow * 0.5f));
 
-            // Warp: a subtle breathing scale + tilt so the visor feels alive.
+            // Warp: a subtle breathing scale + tilt so the reactor feels alive.
             float s = _baseScale * (1f + (_warp * 0.06f) + (_pulse * 0.05f));
             transform.localScale = new Vector3(s, s, s);
             transform.localRotation = Quaternion.Euler(_warp * 4f * Mathf.Sin(Time.time * 6f), 0f, 0f);
@@ -159,7 +159,7 @@ namespace Gantasmo
             var mf = GetComponent<MeshFilter>() ?? gameObject.AddComponent<MeshFilter>();
             _renderer = GetComponent<MeshRenderer>() ?? gameObject.AddComponent<MeshRenderer>();
             mf.sharedMesh = BuildArcMesh();
-            _mat = new Material(FindChromeShader()) { name = "GANTASMO Chrome XXL 8008135" };
+            _mat = new Material(FindChromeShader()) { name = "GANTASMO MIDI Reactor" };
             _mat.SetFloat(_Metallic, 1f);
             _mat.SetFloat(_Smoothness, smoothness);
             _mat.SetColor(_BaseColor, chromeColor);
@@ -179,7 +179,7 @@ namespace Gantasmo
                 ?? Shader.Find("Sprites/Default");
         }
 
-        /// <summary>A curved visor: a 2-row strip on a cylinder arc in front of
+        /// <summary>A curved shield: a 2-row strip on a cylinder arc in front of
         /// the eyes, normals facing inward so the wearer sees the chrome.</summary>
         Mesh BuildArcMesh()
         {
@@ -219,7 +219,7 @@ namespace Gantasmo
                 tris[ti++] = b0; tris[ti++] = a1; tris[ti++] = b1;
             }
 
-            var mesh = new Mesh { name = "GANTASMO Visor Arc" };
+            var mesh = new Mesh { name = "GANTASMO MIDI Reactor Arc" };
             mesh.vertices = verts;
             mesh.normals = norms;
             mesh.uv = uvs;

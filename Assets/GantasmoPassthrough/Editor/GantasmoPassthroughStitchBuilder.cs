@@ -20,7 +20,7 @@ namespace Gantasmo.Passthrough.EditorTools
     /// </summary>
     public static class GantasmoPassthroughStitchBuilder
     {
-        [MenuItem("GANTASMO/Add Passthrough Stitch To Scene")]
+        [MenuItem("GANTASMO/Passthrough/Add Passthrough Stitch To Scene", false, 40)]
         public static void AddToScene()
         {
             var existing = Object.FindAnyObjectByType<GantasmoPassthroughStitch>();

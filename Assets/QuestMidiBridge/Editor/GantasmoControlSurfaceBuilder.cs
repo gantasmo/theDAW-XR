@@ -39,10 +39,10 @@ namespace Gantasmo.XRMidi.EditorTools
         //  Menu
         // ===================================================================
 
-        [MenuItem("GANTASMO/Build XR MIDI Control Surface")]
+        [MenuItem("GANTASMO/Control Surface/Build XR MIDI Control Surface", false, 20)]
         public static void Build() => BuildFrom(GetOrCreateDefaultConfig());
 
-        [MenuItem("GANTASMO/Build Surface From Selected Config")]
+        [MenuItem("GANTASMO/Control Surface/Build Surface From Selected Config", false, 21)]
         public static void BuildFromSelected()
         {
             var cfg = Selection.activeObject as GantasmoSurfaceConfig;
@@ -56,7 +56,7 @@ namespace Gantasmo.XRMidi.EditorTools
             BuildFrom(cfg);
         }
 
-        [MenuItem("GANTASMO/Create Surface Config Preset")]
+        [MenuItem("GANTASMO/Control Surface/Create Surface Config Preset", false, 22)]
         public static void CreateConfigPreset()
         {
             EnsureFolders();
@@ -71,7 +71,7 @@ namespace Gantasmo.XRMidi.EditorTools
                       "'Build Surface From Selected Config'.");
         }
 
-        [MenuItem("GANTASMO/Reset Surface Config To Default Layout")]
+        [MenuItem("GANTASMO/Control Surface/Reset Surface Config To Default Layout", false, 23)]
         public static void ResetDefaultConfig()
         {
             var cfg = GetOrCreateDefaultConfig();
@@ -529,7 +529,7 @@ namespace Gantasmo.XRMidi.EditorTools
 
         // ---- repair (fix already-built surfaces without a full rebuild) -----
 
-        [MenuItem("GANTASMO/Repair XR MIDI Surface Interactions")]
+        [MenuItem("GANTASMO/Control Surface/Repair XR MIDI Surface Interactions", false, 26)]
         public static void RepairInteractions()
         {
             int total = 0;
@@ -604,7 +604,7 @@ namespace Gantasmo.XRMidi.EditorTools
 
         // ---- capture (save a hand-arranged surface back into a preset) ------
 
-        [MenuItem("GANTASMO/Capture Surface Layout Into Default Config")]
+        [MenuItem("GANTASMO/Control Surface/Capture Surface Layout Into Default Config", false, 24)]
         public static void CaptureIntoDefault()
         {
             var cfg = GetOrCreateDefaultConfig();
@@ -616,7 +616,7 @@ namespace Gantasmo.XRMidi.EditorTools
                       "current (non-deprecated) components.");
         }
 
-        [MenuItem("GANTASMO/Capture Surface Layout Into Selected Config")]
+        [MenuItem("GANTASMO/Control Surface/Capture Surface Layout Into Selected Config", false, 25)]
         public static void CaptureLayout()
         {
             var cfg = Selection.activeObject as GantasmoSurfaceConfig;

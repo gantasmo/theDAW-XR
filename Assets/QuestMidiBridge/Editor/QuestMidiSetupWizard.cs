@@ -39,7 +39,7 @@ namespace QuestMidiBridge.EditorTools
         static readonly Color Green = new Color(0.36f, 0.78f, 0.40f);
         static readonly Color Amber = new Color(0.93f, 0.61f, 0.22f);
 
-        [MenuItem("Window/Quest MIDI Bridge/Setup Wizard", false, 0)]
+        [MenuItem("GANTASMO/MIDI Bridge/Setup Wizard", false, 0)]
         public static void Open()
         {
             var w = GetWindow<QuestMidiSetupWizard>(false, "Quest MIDI", true);
@@ -47,7 +47,7 @@ namespace QuestMidiBridge.EditorTools
             w.Show();
         }
 
-        [MenuItem("Window/Quest MIDI Bridge/Open Bridge Folder", false, 1)]
+        [MenuItem("GANTASMO/MIDI Bridge/Open Bridge Folder", false, 1)]
         public static void OpenBridgeFolderMenu() => EditorUtility.RevealInFinder(BridgeDir + "/");
 
         static string BridgeDir =>
@@ -86,10 +86,10 @@ namespace QuestMidiBridge.EditorTools
                 MessageType.None);
             _midiPortName = EditorGUILayout.TextField("MIDI port name", _midiPortName);
             EditorGUILayout.HelpBox(
-                "Return circuit (DAW → headset): create a SECOND loopMIDI port with the " +
+                "Return circuit (DAW to headset): create a SECOND loopMIDI port with the " +
                 "name below. The DAW writes to it and the bridge forwards it to the Quest " +
-                "(the GANTASMO Visor reacts). Use a different name than above — sharing one " +
-                "port would echo the Quest's own data back to it.",
+                "(the MIDI Reactor reacts). Use a different name than the one above, since " +
+                "sharing one port would echo the Quest's own data back to it.",
                 MessageType.None);
             _midiInPortName = EditorGUILayout.TextField("Return port name", _midiInPortName);
             if (GUILayout.Button("Download loopMIDI"))
@@ -158,9 +158,9 @@ namespace QuestMidiBridge.EditorTools
             using (new EditorGUILayout.HorizontalScope())
             {
                 if (GUILayout.Button("Build XR MIDI Surface"))
-                    EditorApplication.ExecuteMenuItem("GANTASMO/Build XR MIDI Control Surface");
+                    EditorApplication.ExecuteMenuItem("GANTASMO/Control Surface/Build XR MIDI Control Surface");
                 if (GUILayout.Button("Repair Interactions"))
-                    EditorApplication.ExecuteMenuItem("GANTASMO/Repair XR MIDI Surface Interactions");
+                    EditorApplication.ExecuteMenuItem("GANTASMO/Control Surface/Repair XR MIDI Surface Interactions");
             }
             if (GUILayout.Button("Validate scene wiring")) ValidateScene();
 

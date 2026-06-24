@@ -9,9 +9,9 @@
  *
  * The IN path completes the circuit: the DAW (or anything) writes MIDI to the
  * return loopMIDI port and the bridge forwards it down the same socket to the
- * headset, where the GANTASMO Visor (and any other receiver) reacts to it.
+ * headset, where the MIDI Reactor (and any other receiver) reacts to it.
  *
- * Use a SEPARATE loopMIDI port for the return ("QuestMIDI-Return") — routing
+ * Use a SEPARATE loopMIDI port for the return ("QuestMIDI-Return"). Routing
  * the return through the same "QuestMIDI" port would echo the Quest's own
  * hand data straight back to it.
  *
@@ -111,7 +111,7 @@ if (tryOpenMidi()) {
 
 // 2b) Return circuit: open a SECOND virtual MIDI port as an INPUT. Whatever the
 //     DAW writes there gets forwarded to every connected Quest socket using the
-//     same [len][bytes...] framing, so the headset (GANTASMO Visor, etc.) reacts.
+//     same [len][bytes...] framing, so the headset (MIDI Reactor, etc.) reacts.
 const sockets = new Set();
 
 function frameMidi(msg) {

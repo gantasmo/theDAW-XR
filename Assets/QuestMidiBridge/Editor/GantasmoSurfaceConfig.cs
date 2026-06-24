@@ -7,7 +7,7 @@ namespace Gantasmo.XRMidi.EditorTools
     /// A saved layout/preset for the GANTASMO XR MIDI surface. Edit it in the
     /// Inspector to change the count, position, rotation, scale, materials, and
     /// (optionally) the custom 3D object used for each control group, then build from
-    /// it with <c>GANTASMO ▸ Build Surface From Selected Config</c>. Duplicate the
+    /// it with <c>GANTASMO > Control Surface > Build Surface From Selected Config</c>. Duplicate the
     /// asset to keep several presets; mark one as the project default (see the builder).
     ///
     /// This is an editor-only authoring asset — it is never loaded at runtime and
