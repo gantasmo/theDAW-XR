@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f2fc47430328b42966856259794b72, type: 3}
+  m_Name: FlexalonLayoutAdapter
+  m_EditorClassIdentifier: Assembly-CSharp::ModularVirtualInstrument.FlexalonLayoutAdapter
+  layoutName: Layout
+  description: 
+  layoutType: 2
+  gridColumns: 3
+  gridRows: 2
+  columnSpacing: 0.73
+  rowSpacing: 0.59
+  flexDirection: 4
+  flexGap: 0.62
+  flexWrap: 0
+  flexWrapDirection: 3
+  circleRadius: 1.61
+  circleStartAngle: 0
+  circleSpacingDegrees: 32.3
+  circleSpiral: 0
+  spiralSpacing: 0.5
+  circleRadiusMultiplier: 0.68
+  curvePath:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.01058197
+      value: 0.7926636
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 8.899953
+      outSlope: 8.899953
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.089005254
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curveLength: 3.3
+  curveSpacing: 2.16
+  horizontalAlign: 0
+  verticalAlign: 1
+  depthAlign: 0
+  randomBoundsMin: {x: -2, y: 0, z: -2}
+  randomBoundsMax: {x: 2, y: 0, z: 2}
+  randomSeed: 3613
+  shapeType: 4
+  shapeRadius: 2.55
+  shapeSides: 7
+  shapeRadiusMultiplier: 0.39
+  useAnimations: 1
+  animationSpeed: 3.2

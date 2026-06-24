@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43aefb1d4d51c0d48af9c6c86925400d, type: 3}
+  m_Name: ExampleStem_5
+  m_EditorClassIdentifier: Assembly-CSharp::ModularVirtualInstrument.StemData
+  stemName: Stem 2
+  description: 
+  audioClip: {fileID: 8300000, guid: 2497141716d92f54ba9c5ac9b38d1566, type: 3}
+  defaultVolume: 0.7
+  loopAudio: 1
+  outputMixerGroup: {fileID: 24300002, guid: e72fe52590beecb4f9364f16803bbcbc, type: 2}
+  xAxisEffect: {fileID: 11400000, guid: 039aaf18937750b43a2678ddf25d521c, type: 2}
+  yAxisEffect: {fileID: 11400000, guid: 4b372034d559d39499f3a489a9ada253, type: 2}
+  zAxisEffect: {fileID: 11400000, guid: d489275f7a3d9314094224ace3b37b3d, type: 2}
+  cubeSize: {x: 0.3, y: 0.3, z: 0.3}
+  handTrackingSmoothing: 0.8
+  themeColor: {r: 1, g: 0, b: 1, a: 1}
+  accentColor: {r: 1, g: 1, b: 1, a: 1}
+  emissionIntensity: 2
+  preferredPositionOffset: {x: 0, y: 0, z: 0}
+  preferredRotation: {x: 0, y: 0, z: 0}
+  handAssignmentPriority: 5
+  audioReactiveVisuals: 1
+  showWaveform: 1
