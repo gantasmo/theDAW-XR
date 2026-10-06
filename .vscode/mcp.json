@@ -1,0 +1,24 @@
+{
+	"servers": {
+		"coplaydev/unity-mcp": {
+			"type": "stdio",
+			"command": "other",
+			"args": [
+				"--directory",
+				"${input:unity_mcp_server_src}",
+				"run",
+				"server.py"
+			],
+			"gallery": "https://api.mcp.github.com",
+			"version": "1.0.0"
+		}
+	},
+	"inputs": [
+		{
+			"id": "unity_mcp_server_src",
+			"type": "promptString",
+			"description": "Absolute path to the Unity MCP Server 'src' folder installed by the Unity package (e.g., macOS: ~/Library/Application Support/UnityMCP/UnityMcpServer/src; Windows: %USERPROFILE%/AppData/Local/UnityMCP/UnityMcpServer/src; Linux: ~/.local/share/UnityMCP/UnityMcpServer/src).",
+			"password": false
+		}
+	]
+}
